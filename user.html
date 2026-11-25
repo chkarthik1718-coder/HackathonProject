@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteSphere | Voter Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="user">
+<header class="topbar">
+  <a class="brand" href="user.html"><span class="brand-mark">✓</span><span><strong>VoteSphere</strong><small>Voter Portal</small></span></a>
+  <div class="top-actions"><span id="userName" class="session-label"></span><button id="logoutBtn" class="btn btn-outline">Logout</button></div>
+</header>
+<div class="dashboard user-dashboard">
+  <aside class="sidebar">
+    <div class="side-title">USER MODULE</div>
+    <button class="side-link active" data-section="vote">◉ <span>Cast Vote</span></button>
+    <button class="side-link" data-section="status">✓ <span>My Status</span></button>
+    <button class="side-link" data-section="results">▤ <span>Results</span></button>
+    <div class="sidebar-bottom"><div class="security-dot"></div><small>One person, one vote<br>Your demo ballot is stored locally</small></div>
+  </aside>
+
+  <main class="content">
+    <section class="dash-section active" id="vote">
+      <div class="page-heading"><div><span class="eyebrow">VOTER MODULE</span><h1>Cast your vote</h1><p>Select one candidate and confirm your ballot.</p></div></div>
+      <div id="electionHero" class="election-hero"></div>
+      <div id="votingArea"></div>
+    </section>
+
+    <section class="dash-section" id="status">
+      <div class="page-heading"><div><span class="eyebrow">BALLOT STATUS</span><h1>My voting status</h1><p>Review your participation in the current election.</p></div></div>
+      <div id="statusCard"></div>
+    </section>
+
+    <section class="dash-section" id="results">
+      <div class="page-heading"><div><span class="eyebrow">TRANSPARENCY</span><h1>Live results</h1><p>Vote totals shown after you submit your ballot.</p></div></div>
+      <div id="userResults" class="card panel"></div>
+    </section>
+  </main>
+</div>
+<div id="confirmModal" class="modal hidden">
+  <div class="modal-card"><button class="modal-close" id="modalClose">×</button><div class="modal-icon">✓</div><h2>Confirm your vote</h2><p id="confirmText">You are about to submit your ballot.</p><div class="modal-actions"><button class="btn btn-outline" id="cancelVote">Cancel</button><button class="btn btn-primary" id="confirmVote">Confirm vote</button></div></div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/data.js"></script><script src="js/auth.js"></script><script src="js/user.js"></script>
+</body>
+</html>

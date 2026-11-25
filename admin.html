@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteSphere | Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="admin">
+<header class="topbar">
+  <a class="brand" href="admin.html"><span class="brand-mark">✓</span><span><strong>VoteSphere</strong><small>Admin Console</small></span></a>
+  <div class="top-actions"><span id="adminName" class="session-label"></span><button id="logoutBtn" class="btn btn-outline">Logout</button></div>
+</header>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="side-title">ADMIN MODULE</div>
+    <button class="side-link active" data-section="overview">◈ <span>Overview</span></button>
+    <button class="side-link" data-section="elections">▣ <span>Elections</span></button>
+    <button class="side-link" data-section="candidates">♙ <span>Candidates</span></button>
+    <button class="side-link" data-section="voters">◎ <span>Voters</span></button>
+    <button class="side-link" data-section="results">▤ <span>Results</span></button>
+    <div class="sidebar-bottom"><div class="security-dot"></div><small>Local demo storage<br>Data persists in this browser</small></div>
+  </aside>
+
+  <main class="content">
+    <section class="dash-section active" id="overview">
+      <div class="page-heading"><div><span class="eyebrow">CONTROL CENTER</span><h1>Good day, Admin.</h1><p>Monitor elections, voters and participation from one place.</p></div><button class="btn btn-primary" data-jump="elections">+ New election</button></div>
+      <div id="adminStats" class="stats-grid"></div>
+      <div class="two-col">
+        <div class="card panel"><div class="panel-head"><div><h3>Current election</h3><p>Live participation snapshot</p></div><span class="status-badge live">● LIVE</span></div><div id="adminLive"></div></div>
+        <div class="card panel"><div class="panel-head"><div><h3>Quick actions</h3><p>Common administration tasks</p></div></div><div class="quick-actions"><button data-jump="candidates">Manage candidates <span>→</span></button><button data-jump="voters">View registered voters <span>→</span></button><button data-jump="results">View live results <span>→</span></button></div></div>
+      </div>
+    </section>
+
+    <section class="dash-section" id="elections">
+      <div class="page-heading"><div><span class="eyebrow">ELECTION MANAGEMENT</span><h1>Elections</h1><p>Create, activate or close an election.</p></div></div>
+      <div class="card panel">
+        <form id="electionForm" class="inline-form">
+          <label>Election title<input id="electionTitle" placeholder="e.g. Student Council Election 2026" required></label>
+          <label>Date<input id="electionDate" type="date" required></label>
+          <button class="btn btn-primary" type="submit">Create election</button>
+        </form>
+      </div>
+      <div id="electionList" class="election-list"></div>
+    </section>
+
+    <section class="dash-section" id="candidates">
+      <div class="page-heading"><div><span class="eyebrow">CANDIDATE MANAGEMENT</span><h1>Candidates</h1><p>Add candidates to the active election.</p></div></div>
+      <div class="card panel">
+        <form id="candidateForm" class="inline-form">
+          <label>Candidate name<input id="candidateName" placeholder="Full name" required></label>
+          <label>Position<input id="candidatePosition" placeholder="e.g. President" required></label>
+          <label>Symbol<input id="candidateSymbol" maxlength="2" placeholder="★"></label>
+          <button class="btn btn-primary" type="submit">Add candidate</button>
+        </form>
+      </div>
+      <div id="candidateList" class="candidate-grid"></div>
+    </section>
+
+    <section class="dash-section" id="voters">
+      <div class="page-heading"><div><span class="eyebrow">VOTER MANAGEMENT</span><h1>Registered voters</h1><p>Review users registered through Local Storage.</p></div></div>
+      <div class="card panel"><div id="voterTable"></div></div>
+    </section>
+
+    <section class="dash-section" id="results">
+      <div class="page-heading"><div><span class="eyebrow">RESULTS CENTER</span><h1>Election results</h1><p>Live vote count calculated from stored ballots.</p></div><button id="resetVotesBtn" class="btn btn-danger-outline">Reset demo votes</button></div>
+      <div class="card panel"><div id="resultBoard"></div></div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/data.js"></script><script src="js/auth.js"></script><script src="js/admin.js"></script>
+</body>
+</html>
